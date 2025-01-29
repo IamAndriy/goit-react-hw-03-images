@@ -86,7 +86,7 @@ export class ImageGallery extends Component{
 
                     { isEmpty
                         ?   <p className={css.massage}>Sorry, there are no images for filter</p>
-                        :   <ul className={css["ImageGallery"]}>
+                        :   <ul className={css.gallery}>
                                 {gallery.map((item) => { 
                                                 return <ImageGalleryItem key={nanoid()}
                                                                          id={item.id} 
