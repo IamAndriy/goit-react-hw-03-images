@@ -5,6 +5,7 @@ import { Loader } from "components/Loader/Loader";
 import { Button } from "components/Button/Button";
 import { nanoid } from "nanoid";
 import css from "./ImageGallery.module.css";
+import PropTypes from "prop-types";
 
 const initialState = {
     isLoading: false,
@@ -54,7 +55,7 @@ export class ImageGallery extends Component{
             this.setState({isButtonShown: page < Math.ceil(totalHits / per_page)});
 
         } catch (error) {
-            this.setState({error : error});
+            this.setState({error : error.message});
         }finally{
             this.setState({isLoading : false});
         }
@@ -107,3 +108,13 @@ export class ImageGallery extends Component{
     }
 }
 
+ImageGallery.propTypes = {
+    filter: PropTypes.string,
+    isLoading: PropTypes.bool,
+    isEmpty: PropTypes.bool,
+    isButtonShown: PropTypes.bool,
+    gallery : PropTypes.arrayOf(PropTypes.object),
+    page: PropTypes.number,
+    per_page: PropTypes.number,
+    error: PropTypes.string,
+}
